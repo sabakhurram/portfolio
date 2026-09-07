@@ -1,0 +1,62 @@
+.navbar {
+  position: fixed;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1100px, calc(100% - 40px));
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 24px;
+
+  background: rgba(17, 17, 24, 0.62);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  z-index: 100;
+}
+
+.nav-logo {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+   color: var(--lavender);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 13px;
+  transition: color 0.25s ease;
+}
+
+.nav-links a:hover {
+  color: var(--lavender);
+}
+
+.menu-button {
+  display: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.menu-button span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--white);
+  margin: 5px;
+}
