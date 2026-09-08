@@ -1,6 +1,7 @@
 import { Atom, Cloud, Database } from "lucide-react";
 import "./Hero.css";
 import { useEffect, useState } from "react";
+import { motion } from "motion/react";
 const GitHubIcon = () => (
   <svg
     className="github-svg"
@@ -53,7 +54,12 @@ useEffect(() => {
       <div className="hero-content">
 
         {/* LEFT SIDE */}
-        <div className="hero-left">
+       <motion.div
+  className="hero-left"
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7, ease: "easeOut" }}
+>
           <div className="eyebrow">
             <span className="eyebrow-dot" />
             SOFTWARE ENGINEERING STUDENT
@@ -86,10 +92,15 @@ useEffect(() => {
               Let's Connect
             </a>
           </div>
-        </div>
-
+      
+</motion.div>
         {/* RIGHT SIDE */}
-        <div className="hero-visual">
+       <motion.div
+  className="hero-visual"
+  initial={{ opacity: 0, x: 40 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+>
 
           {/* Orbit lines */}
           <div className="orbit orbit-one" />
@@ -208,8 +219,8 @@ useEffect(() => {
             </div>
           </div>
 
+       </motion.div>
         </div>
-      </div>
     </section>
   );
 };
