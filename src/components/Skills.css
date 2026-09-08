@@ -1,0 +1,998 @@
+.skills {
+  position: relative;
+  overflow: hidden;
+
+  min-height: 100vh;
+  padding: 120px 0 80px;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(196, 181, 253, 0.28),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 65%,
+      rgba(221, 214, 254, 0.35),
+      transparent 32%
+    ),
+    #f8f7fc;
+
+  color: #111118;
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.skills-container {
+  width: min(1400px, 90%);
+  margin: 0 auto;
+}
+
+
+/* =========================================
+   INTRO
+========================================= */
+
+.skills-intro {
+  max-width: 650px;
+  margin-bottom: 70px;
+}
+
+.section-label {
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+
+  color: #7c3aed;
+}
+
+.skills-intro h2 {
+  margin: 0;
+
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+  font-weight: 700;
+}
+
+.skills-intro h2 span {
+  color: #7c3aed;
+}
+
+.skills-intro p {
+  max-width: 540px;
+
+  margin: 25px 0 0;
+
+  font-size: 1rem;
+  line-height: 1.7;
+
+  color: #686878;
+}
+
+
+/* =========================================
+   SHOWCASE
+========================================= */
+
+.skills-showcase {
+  display: grid;
+
+  grid-template-columns:
+    minmax(240px, 0.8fr)
+    minmax(500px, 1.4fr)
+    minmax(240px, 0.8fr);
+
+  align-items: center;
+
+  min-height: 650px;
+
+  gap: 30px;
+}
+
+
+/* =========================================
+   SKILL COLUMNS
+========================================= */
+
+.skills-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  gap: 80px;
+}
+
+.skills-right {
+  padding-left: 15px;
+}
+
+
+/* =========================================
+   SKILL GROUP
+========================================= */
+
+.skill-group {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 35px 1fr;
+
+  gap: 18px;
+
+  padding: 5px 0;
+}
+
+.skill-number {
+  padding-top: 4px;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+
+  color: #a39eae;
+}
+
+.skill-content {
+  max-width: 310px;
+}
+
+.skill-group-title {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  margin-bottom: 13px;
+}
+
+.skill-group-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 10px;
+
+  background: rgba(124, 58, 237, 0.08);
+
+  color: #7c3aed;
+
+  font-size: 1rem;
+}
+
+.skill-group h3 {
+  margin: 0;
+
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.skill-content > p {
+  margin: 0 0 18px;
+
+  font-size: 0.82rem;
+  line-height: 1.65;
+
+  color: #747180;
+}
+
+
+/* =========================================
+   TAGS
+========================================= */
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+.skill-tags span {
+  padding: 6px 10px;
+
+  border: 1px solid rgba(124, 58, 237, 0.12);
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  font-size: 0.68rem;
+  font-weight: 600;
+
+  color: #65606e;
+
+  backdrop-filter: blur(8px);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.skill-tags span:hover {
+  transform: translateY(-2px);
+
+  background: rgba(124, 58, 237, 0.08);
+
+  color: #7c3aed;
+}
+
+
+/* =========================================
+   UNIVERSE
+========================================= */
+
+.skill-universe {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 620px;
+}
+
+.universe {
+  position: relative;
+
+  width: 500px;
+  height: 500px;
+
+  max-width: 100%;
+}
+
+
+/* =========================================
+   CENTER GLOW
+========================================= */
+
+.center-glow {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 220px;
+  height: 220px;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: rgba(124, 58, 237, 0.13);
+
+  filter: blur(45px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   STATIC ORBITS
+========================================= */
+
+.orbit-line {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border: 1px solid rgba(124, 58, 237, 0.14);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+/* 115 x 115 radius */
+
+.orbit-line-1 {
+  width: 230px;
+  height: 230px;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(0deg);
+}
+
+
+/* 140 x 90 radius */
+
+.orbit-line-2 {
+  width: 280px;
+  height: 180px;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(28deg);
+}
+
+
+/* 165 x 105 radius */
+
+.orbit-line-3 {
+  width: 330px;
+  height: 210px;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(-25deg);
+}
+
+
+/* 190 x 125 radius */
+
+.orbit-line-4 {
+  width: 380px;
+  height: 250px;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(12deg);
+}
+
+
+/* 215 x 145 radius */
+
+.orbit-line-5 {
+  width: 430px;
+  height: 290px;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(-16deg);
+}
+
+
+/* 235 x 165 radius */
+
+.orbit-line-6 {
+  width: 470px;
+  height: 330px;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(8deg);
+}
+
+
+/* =========================================
+   PLANETS
+========================================= */
+
+.planet {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 0;
+  height: 0;
+
+  z-index: 4;
+
+  pointer-events: none;
+
+  will-change: transform;
+}
+
+.planet-content {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 7px;
+
+  transform: translate(-50%, -50%);
+
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   PLANET ICON
+========================================= */
+
+.planet-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 46px;
+  height: 46px;
+
+  border: 1px solid rgba(124, 58, 237, 0.13);
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.96),
+      rgba(245, 243, 251, 0.9)
+    );
+
+  box-shadow:
+    0 8px 25px rgba(40, 30, 70, 0.08);
+
+  color: #7c3aed;
+
+  font-size: 1.25rem;
+
+  backdrop-filter: blur(10px);
+}
+
+.planet-content span {
+  font-size: 0.67rem;
+  font-weight: 600;
+
+  color: #77727f;
+}
+
+
+/* =========================================
+   CENTER
+========================================= */
+
+.universe-center {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  z-index: 6;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 145px;
+  height: 145px;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #9b6cf4,
+      #7c3aed 55%,
+      #6528d6
+    );
+
+  box-shadow:
+    0 0 0 1px rgba(124, 58, 237, 0.15),
+    0 20px 60px rgba(124, 58, 237, 0.25),
+    0 0 80px rgba(124, 58, 237, 0.16);
+
+  color: white;
+
+  text-align: center;
+}
+
+.center-name {
+  margin-bottom: 8px;
+
+  font-size: 1.5rem;
+  font-weight: 800;
+
+  letter-spacing: -0.04em;
+}
+
+.center-role {
+  font-size: 0.55rem;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+
+  opacity: 0.85;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.space-star {
+  position: absolute;
+
+  color: rgba(124, 58, 237, 0.35);
+
+  font-size: 0.8rem;
+
+  pointer-events: none;
+}
+
+.star-one {
+  top: 18%;
+  left: 5%;
+}
+
+.star-two {
+  top: 10%;
+  right: 8%;
+
+  font-size: 0.65rem;
+}
+
+.star-three {
+  bottom: 17%;
+  right: 5%;
+
+  font-size: 0.7rem;
+}
+
+.star-four {
+  bottom: 10%;
+  left: 12%;
+
+  font-size: 0.55rem;
+}
+
+
+/* =========================================
+   BOTTOM
+========================================= */
+
+.skills-bottom {
+  display: flex;
+  align-items: center;
+
+  gap: 30px;
+
+  margin-top: 50px;
+}
+
+.bottom-line {
+  flex: 1;
+
+  height: 1px;
+
+  background: rgba(124, 58, 237, 0.1);
+}
+
+.learning-note {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+}
+
+.learning-note p {
+  margin: 0;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  color: #85808c;
+
+  white-space: nowrap;
+}
+
+.learning-star {
+  color: #7c3aed;
+
+  font-size: 0.8rem;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1150px) {
+
+  .skills-showcase {
+    grid-template-columns:
+      minmax(190px, 0.75fr)
+      minmax(420px, 1.25fr)
+      minmax(190px, 0.75fr);
+
+    gap: 15px;
+  }
+
+  .skill-content {
+    max-width: 260px;
+  }
+
+  .universe {
+    width: 440px;
+    height: 440px;
+  }
+
+  .skill-universe {
+    height: 550px;
+  }
+
+  /*
+    The JavaScript orbit calculations use the
+    actual universe width, so they automatically
+    shrink to 440 / 500.
+  */
+
+  .orbit-line-1 {
+    width: 202px;
+    height: 202px;
+  }
+
+  .orbit-line-2 {
+    width: 246px;
+    height: 158px;
+  }
+
+  .orbit-line-3 {
+    width: 290px;
+    height: 185px;
+  }
+
+  .orbit-line-4 {
+    width: 334px;
+    height: 220px;
+  }
+
+  .orbit-line-5 {
+    width: 378px;
+    height: 255px;
+  }
+
+  .orbit-line-6 {
+    width: 414px;
+    height: 290px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+  .skills {
+    padding: 90px 0 60px;
+  }
+
+  .skills-showcase {
+    display: flex;
+    flex-direction: column;
+
+    min-height: auto;
+
+    gap: 55px;
+  }
+
+
+  /*
+    IMPORTANT:
+
+    Universe comes FIRST on mobile.
+
+    This prevents the user from immediately
+    seeing the 01 / 03 numbers at the top.
+  */
+
+  .skill-universe {
+    order: 1;
+
+    height: auto;
+
+    margin: 5px 0 20px;
+  }
+
+  .skills-left {
+    order: 2;
+  }
+
+  .skills-right {
+    order: 3;
+  }
+
+
+  .skills-column {
+    width: 100%;
+
+    gap: 45px;
+  }
+
+  .skills-right {
+    padding-left: 0;
+  }
+
+  .skill-content {
+    max-width: 100%;
+  }
+
+
+  /*
+    Universe is now 420px.
+
+    JS automatically calculates:
+
+    420 / 500 = 0.84
+
+    so the icons and their mathematical
+    orbit paths shrink together.
+  */
+
+  .universe {
+    width: 420px;
+    height: 420px;
+  }
+
+
+  /* Static rings */
+
+  .orbit-line-1 {
+    width: 193px;
+    height: 193px;
+  }
+
+  .orbit-line-2 {
+    width: 235px;
+    height: 151px;
+  }
+
+  .orbit-line-3 {
+    width: 277px;
+    height: 176px;
+  }
+
+  .orbit-line-4 {
+    width: 319px;
+    height: 210px;
+  }
+
+  .orbit-line-5 {
+    width: 361px;
+    height: 244px;
+  }
+
+  .orbit-line-6 {
+    width: 395px;
+    height: 277px;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .skills-container {
+    width: 88%;
+  }
+
+  .skills-intro {
+    margin-bottom: 40px;
+  }
+
+  .skills-intro h2 {
+    font-size: 3rem;
+  }
+
+  .skills-intro p {
+    font-size: 0.9rem;
+  }
+
+
+  /*
+    350px universe
+
+    JS scale:
+
+    350 / 500 = 0.70
+
+    Therefore every planet's orbit
+    becomes exactly 70% of desktop.
+  */
+
+  .universe {
+    width: 350px;
+    height: 350px;
+  }
+
+  .skill-universe {
+    min-height: 350px;
+
+    height: 350px;
+
+    overflow: visible;
+  }
+
+
+  /* Static rings scaled to 70% */
+
+  .orbit-line-1 {
+    width: 161px;
+    height: 161px;
+  }
+
+  .orbit-line-2 {
+    width: 196px;
+    height: 126px;
+  }
+
+  .orbit-line-3 {
+    width: 231px;
+    height: 147px;
+  }
+
+  .orbit-line-4 {
+    width: 266px;
+    height: 175px;
+  }
+
+  .orbit-line-5 {
+    width: 301px;
+    height: 203px;
+  }
+
+  .orbit-line-6 {
+    width: 329px;
+    height: 231px;
+  }
+
+
+  /* Center */
+
+  .universe-center {
+    width: 110px;
+    height: 110px;
+  }
+
+  .center-name {
+    font-size: 1.2rem;
+  }
+
+  .center-role {
+    font-size: 0.45rem;
+  }
+
+
+  /* Smaller icons */
+
+  .planet-icon {
+    width: 38px;
+    height: 38px;
+
+    font-size: 1rem;
+  }
+
+  .planet-content span {
+    font-size: 0.58rem;
+  }
+
+
+  /* Stars */
+
+  .space-star {
+    font-size: 0.6rem;
+  }
+
+
+  .skills-bottom {
+    gap: 15px;
+  }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 380px) {
+
+  .skills-container {
+    width: 90%;
+  }
+
+  .skills-intro h2 {
+    font-size: 2.6rem;
+  }
+
+  /*
+    320px universe.
+
+    JS scale:
+
+    320 / 500 = 0.64
+  */
+
+  .universe {
+    width: 320px;
+    height: 320px;
+  }
+
+  .skill-universe {
+    height: 320px;
+    min-height: 320px;
+  }
+
+
+  .orbit-line-1 {
+    width: 147px;
+    height: 147px;
+  }
+
+  .orbit-line-2 {
+    width: 179px;
+    height: 115px;
+  }
+
+  .orbit-line-3 {
+    width: 211px;
+    height: 134px;
+  }
+
+  .orbit-line-4 {
+    width: 243px;
+    height: 160px;
+  }
+
+  .orbit-line-5 {
+    width: 275px;
+    height: 186px;
+  }
+
+  .orbit-line-6 {
+    width: 301px;
+    height: 211px;
+  }
+
+
+  .universe-center {
+    width: 100px;
+    height: 100px;
+  }
+
+  .planet-icon {
+    width: 34px;
+    height: 34px;
+
+    font-size: 0.9rem;
+  }
+
+  .planet-content span {
+    font-size: 0.52rem;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .planet {
+    will-change: auto;
+  }
+
+  .skill-tags span {
+    transition: none;
+  }
+}
