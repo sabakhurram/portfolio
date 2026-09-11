@@ -487,6 +487,10 @@ function Projects() {
                     <a href={project.github}>
                       GitHub <span>↗</span>
                     </a>
+                      <Link to={`/projects/${project.slug}`}>
+    Case Study <span>↗</span>
+  </Link>
+
                   </motion.div>
 
                 </div>

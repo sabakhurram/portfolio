@@ -6,6 +6,7 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects.jsx";
 import ProjectDetails from "./pages/ProjectDetails";
+import Contact  from "./components/Contact.jsx";
 
 function Home() {
   return (
@@ -17,6 +18,7 @@ function Home() {
         <About />
         <Skills />
         <Projects />
+        <Contact/>
       </main>
     </>
   );

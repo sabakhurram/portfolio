@@ -538,3 +538,206 @@
     font-size: 19px;
   }
 }
+/* =========================================================
+   BUILD → CONNECT TRANSITION
+========================================================= */
+
+.build-connect-transition {
+  position: relative;
+  height: 420px;
+  margin-top: 80px;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  /*
+    The important part:
+    the background itself changes.
+  */
+  background:
+    radial-gradient(
+      circle at 50% 48%,
+      rgba(196, 181, 253, 0.22),
+      transparent 16%
+    ),
+    linear-gradient(
+      to bottom,
+      #08080c 0%,
+      #0b0a11 28%,
+      #171329 52%,
+      #6d5bb3 76%,
+      #f1edff 100%
+    );
+}
+
+
+/* -----------------------------------------
+   CENTER CORE
+----------------------------------------- */
+
+.transition-core {
+  position: absolute;
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #f8f7fc;
+
+  box-shadow:
+    0 0 0 6px rgba(196, 181, 253, 0.14),
+    0 0 30px rgba(196, 181, 253, 0.8),
+    0 0 70px rgba(139, 92, 246, 0.45);
+
+  z-index: 4;
+}
+
+
+/* -----------------------------------------
+   EXPANDING RING
+----------------------------------------- */
+
+.transition-ring {
+  position: absolute;
+
+  width: 90px;
+  height: 90px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(248, 247, 252, 0.28);
+
+  box-shadow:
+    0 0 40px rgba(196, 181, 253, 0.18);
+
+  z-index: 2;
+}
+
+
+/* -----------------------------------------
+   CONNECTING LINES
+----------------------------------------- */
+
+.transition-line {
+  position: absolute;
+
+  top: 50%;
+
+  width: 32vw;
+  max-width: 420px;
+  height: 1px;
+
+  transform-origin: center;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(196, 181, 253, 0.65),
+    rgba(248, 247, 252, 0.9)
+  );
+
+  z-index: 1;
+}
+
+.transition-line-left {
+  right: calc(50% + 35px);
+}
+
+.transition-line-right {
+  left: calc(50% + 35px);
+
+  background: linear-gradient(
+    90deg,
+    rgba(248, 247, 252, 0.9),
+    rgba(196, 181, 253, 0.65),
+    transparent
+  );
+}
+
+
+/* -----------------------------------------
+   LABEL
+----------------------------------------- */
+
+.transition-label {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-top: 150px;
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+
+  color: rgba(248, 247, 252, 0.72);
+
+  z-index: 5;
+}
+
+.transition-arrow {
+  color: #c4b5fd;
+  font-size: 15px;
+}
+
+
+/* -----------------------------------------
+   SUBTLE AMBIENT GLOW
+----------------------------------------- */
+
+.build-connect-transition::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 280px;
+  height: 280px;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: rgba(139, 92, 246, 0.12);
+
+  filter: blur(70px);
+
+  pointer-events: none;
+}
+
+
+/* -----------------------------------------
+   MOBILE
+----------------------------------------- */
+
+@media (max-width: 768px) {
+  .build-connect-transition {
+    height: 320px;
+    margin-top: 50px;
+  }
+
+  .transition-line {
+    width: 26vw;
+  }
+
+  .transition-ring {
+    width: 70px;
+    height: 70px;
+  }
+
+  .transition-label {
+    margin-top: 120px;
+    font-size: 9px;
+  }
+}
