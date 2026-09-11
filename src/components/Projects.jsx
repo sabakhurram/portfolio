@@ -16,8 +16,8 @@ const projects = [
     outcome: "Production-ready management system",
     technologies: "React · Node.js · PostgreSQL · Supabase",
     image: "/projects/mileage-management.png",
-    live: "#",
-    github: "#",
+    live: "https://admin.margallatravels.com.pk/",
+    github: "https://github.com/sabakhurram/margalla-travels-management-frontend",
   },
 
   {
@@ -48,8 +48,8 @@ const projects = [
     outcome: "Production website with 7+ sections and 20+ GSAP animations",
     technologies: "HTML · CSS · JavaScript · GSAP · EmailJS",
     image: "/projects/coperate-website.png",
-    live: "#",
-    github: "#",
+    live: "https://margallatravels.com.pk/",
+    github: "https://github.com/sabakhurram/Margalla-Travels",
   },
 
   {
@@ -64,8 +64,8 @@ const projects = [
     outcome: "Interactive responsive quiz experience",
     technologies: "HTML · CSS · JavaScript · SVG",
     image: "/projects/quiz-pop.png",
-    live: "#",
-    github: "#",
+    // live: "#",
+    github: "https://github.com/sabakhurram/QuizPop",
   },
 ];
 
@@ -480,9 +480,17 @@ function Projects() {
                       amount: 0.25,
                     }}
                   >
-                    <a href={project.live}>
-                      Live Demo <span>↗</span>
-                    </a>
+                 {project.live && project.live !== "#" && (
+  <a
+    href={project.live}
+    target="_blank"
+    rel="noreferrer"
+    className="project-link"
+  >
+    Live Project<span>↗</span>
+   
+  </a>
+)}
 
                     <a href={project.github}>
                       GitHub <span>↗</span>

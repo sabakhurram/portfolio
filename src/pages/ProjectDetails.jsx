@@ -1,15 +1,7 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import {
-  ArrowLeft,
-  ArrowUpRight,
-  Check,
-  Database,
-  ShieldCheck,
-  Code2,
-  Server,
-} from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
 
 import projectDetails from "../data/projectDetails";
 import "./ProjectDetails.css";
@@ -20,19 +12,35 @@ const slugMap = {
   "margalla-travels": "margallaTravels",
   quizpop: "quizPop",
 };
-
+const Reveal = ({ children, className = "" }) => (
+  <motion.div
+    className={className}
+    initial={{ opacity: 0, y: 18 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.2 }}
+    transition={{
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1],
+    }}
+  >
+    {children}
+  </motion.div>
+);
+const linkOK = (url) => {
+  return url && url !== "#" && !url.includes("[");
+};
 const ease = [0.22, 1, 0.36, 1];
 
 const fadeUp = {
   hidden: {
     opacity: 0,
-    y: 24,
+    y: 20,
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.75,
+      duration: 0.65,
       ease,
     },
   },
@@ -41,36 +49,21 @@ const fadeUp = {
 const fadeSide = (direction = 1) => ({
   hidden: {
     opacity: 0,
-    x: direction * 24,
+    x: direction * 18,
   },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.8,
+      duration: 0.65,
       ease,
     },
   },
 });
 
-const imageReveal = {
-  hidden: {
-    opacity: 0,
-    scale: 0.975,
-  },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 1,
-      ease,
-    },
-  },
-};
-
 const viewport = {
   once: true,
-  amount: 0.18,
+  amount: 0.2,
 };
 
 function SectionLabel({ number, children }) {
@@ -78,18 +71,6 @@ function SectionLabel({ number, children }) {
     <div className="pd-section-label">
       <span>{number}</span>
       <span>{children}</span>
-    </div>
-  );
-}
-
-function ArchitectureItem({ icon, label, value }) {
-  return (
-    <div className="pd-architecture-item">
-      <div className="pd-architecture-icon">{icon}</div>
-
-      <div className="pd-architecture-label">{label}</div>
-
-      <div className="pd-architecture-value">{value}</div>
     </div>
   );
 }
@@ -126,125 +107,85 @@ function ProjectDetails() {
     );
   }
 
-  const hasArchitecture = project.architecture;
-  const hasFeatures = project.features?.length > 0;
-  const hasEngineering = project.engineering?.points?.length > 0;
-  const hasContributions = project.contributions?.length > 0;
   const hasLearnings = project.learnings?.length > 0;
-  const hasFutureImprovements = project.futureImprovements?.length > 0;
 
   return (
     <main className="project-details">
       {/* =====================================================
           HERO
       ===================================================== */}
-      <section className="pd-hero">
-        <div className="pd-container">
-          <Link to="/#projects" className="pd-back-link">
-            <ArrowLeft size={16} />
-            <span>All Projects</span>
-          </Link>
+    <section className="cs-hero">
+  <div className="cs-hero-inner">
 
-          <div className="pd-hero-content">
-            <motion.div
-              className="pd-project-meta"
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-            >
-              <span>{project.number}</span>
-              <span>{project.category}</span>
-            </motion.div>
+    {/* Left */}
+    <Reveal className="cs-hero-content">
+      <Link to="/#projects" className="cs-back">
+        <ArrowLeft size={16} />
+        All Projects
+      </Link>
 
-            <motion.h1
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              transition={{ delay: 0.08 }}
-            >
-              {project.title}
-            </motion.h1>
+      <div className="cs-meta">
+        <span>{project.number}</span>
+        <span>{project.category}</span>
+      </div>
 
-            <motion.p
-              className="pd-hero-subtitle"
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              transition={{ delay: 0.16 }}
-            >
-              {project.subtitle}
-            </motion.p>
+      <h1>{project.title}</h1>
 
-            <motion.div
-              className="pd-stack"
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              transition={{ delay: 0.24 }}
-            >
-              {project.stack}
-            </motion.div>
+      <p className="cs-subtitle">
+        {project.subtitle}
+      </p>
 
-            <motion.div
-              className="pd-hero-actions"
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              transition={{ delay: 0.32 }}
-            >
-              {project.live && project.live !== "#" && (
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="pd-button pd-button-primary"
-                >
-                  Visit Live Project
-                  <ArrowUpRight size={16} />
-                </a>
-              )}
+      <div className="cs-stack">
+        {project.stack.split(" · ").map((item) => (
+          <span key={item}>{item}</span>
+        ))}
+      </div>
 
-              {project.github && project.github !== "#" && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="pd-button pd-button-secondary"
-                >
-                  View GitHub
-                  <ArrowUpRight size={16} />
-                </a>
-              )}
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================
-          PROJECT IMAGE
-      ===================================================== */}
-      <section className="pd-image-section">
-        <div className="pd-container">
-          <motion.div
-            className="pd-project-image-wrap"
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewport}
-            variants={imageReveal}
+      <div className="cs-actions">
+        {linkOK(project.live) && (
+          <a
+            href={project.live}
+            target="_blank"
+            rel="noreferrer"
+            className="cs-button cs-button-primary"
           >
-            <img
-              src={project.image}
-              alt={`${project.title} project preview`}
-              className="pd-project-image"
-            />
-          </motion.div>
+            Live Project
+            <ArrowUpRight size={16} />
+          </a>
+        )}
 
-          <div className="pd-image-caption">
-            <span>PROJECT PREVIEW</span>
-            <span>{project.title}</span>
-          </div>
-        </div>
-      </section>
+        {linkOK(project.github) && (
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noreferrer"
+            className="cs-button"
+          >
+            GitHub
+            <ArrowUpRight size={16} />
+          </a>
+        )}
+      </div>
+    </Reveal>
+
+    {/* Right — Project Image */}
+    <Reveal className="cs-hero-image">
+      <div className="cs-image-frame">
+        <img
+          src={project.image}
+          alt={`${project.title} preview`}
+        />
+      </div>
+
+      <span className="cs-image-label">
+        PROJECT PREVIEW
+      </span>
+    </Reveal>
+
+  </div>
+</section>
+
+
 
       {/* =====================================================
           OVERVIEW
@@ -254,33 +195,33 @@ function ProjectDetails() {
           <SectionLabel number="01">OVERVIEW</SectionLabel>
 
           <div className="pd-overview-grid">
-            <motion.div
+            <motion.h2
               initial="hidden"
               whileInView="visible"
               viewport={viewport}
               variants={fadeSide(-1)}
             >
-              <h2>{project.overviewTitle}</h2>
-            </motion.div>
+              {project.overviewTitle}
+            </motion.h2>
 
-            <motion.div
+            <motion.p
               initial="hidden"
               whileInView="visible"
               viewport={viewport}
               variants={fadeSide(1)}
             >
-              <p>{project.overview}</p>
-            </motion.div>
+              {project.overview}
+            </motion.p>
           </div>
         </div>
       </section>
 
       {/* =====================================================
-          CHALLENGE / SOLUTION
+          PROBLEM + SOLUTION
       ===================================================== */}
-      <section className="pd-section pd-challenge">
+      <section className="pd-section pd-story">
         <div className="pd-container">
-          <SectionLabel number="02">CHALLENGE & SOLUTION</SectionLabel>
+          <SectionLabel number="02">PROBLEM & SOLUTION</SectionLabel>
 
           <div className="pd-story-grid">
             <motion.article
@@ -290,7 +231,7 @@ function ProjectDetails() {
               viewport={viewport}
               variants={fadeSide(-1)}
             >
-              <span className="pd-small-label">THE CHALLENGE</span>
+              <span className="pd-small-label">THE PROBLEM</span>
 
               <h3>{project.problem.title}</h3>
 
@@ -315,260 +256,44 @@ function ProjectDetails() {
       </section>
 
       {/* =====================================================
-          ARCHITECTURE
+          WHAT I LEARNED
       ===================================================== */}
-      {hasArchitecture && (
-        <section className="pd-section pd-architecture">
+      {hasLearnings && (
+        <section className="pd-section pd-learnings">
           <div className="pd-container">
-            <SectionLabel number="03">TECHNICAL ARCHITECTURE</SectionLabel>
+            <SectionLabel number="03">WHAT I LEARNED</SectionLabel>
 
-            <motion.div
-              className="pd-section-heading"
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewport}
-              variants={fadeUp}
-            >
-              <h2>How the product is structured.</h2>
-
-              <p>
-                The technologies below form the core of the application and
-                define how the different parts of the system work together.
-              </p>
-            </motion.div>
-
-            <div className="pd-architecture-grid">
-              <ArchitectureItem
-                icon={<Code2 size={20} />}
-                label="FRONTEND"
-                value={project.architecture.frontend}
-              />
-
-              <ArchitectureItem
-                icon={<Server size={20} />}
-                label="BACKEND"
-                value={project.architecture.backend}
-              />
-
-              <ArchitectureItem
-                icon={<ShieldCheck size={20} />}
-                label="AUTHENTICATION"
-                value={project.architecture.authentication}
-              />
-
-              <ArchitectureItem
-                icon={<Database size={20} />}
-                label="DATABASE"
-                value={project.architecture.database}
-              />
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* =====================================================
-          FEATURES
-      ===================================================== */}
-      {hasFeatures && (
-        <section className="pd-section pd-features">
-          <div className="pd-container">
-            <SectionLabel number="04">KEY FEATURES</SectionLabel>
-
-            <motion.div
-              className="pd-section-heading pd-feature-heading"
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewport}
-              variants={fadeUp}
-            >
-              <h2>
-                Built around <span>real functionality.</span>
-              </h2>
-
-              <p>
-                The most important parts of the product, from the user's
-                perspective and from an engineering standpoint.
-              </p>
-            </motion.div>
-
-            <div className="pd-features-grid">
-              {project.features.map((feature, index) => (
-                <motion.article
-                  className="pd-feature-card"
-                  key={feature.number}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={viewport}
-                  variants={fadeUp}
-                  transition={{
-                    delay: Math.min(index * 0.05, 0.25),
-                  }}
-                >
-                  <div className="pd-feature-top">
-                    <span>{feature.number}</span>
-
-                    <div className="pd-check">
-                      <Check size={15} />
-                    </div>
-                  </div>
-
-                  <h3>{feature.title}</h3>
-
-                  <p>{feature.description}</p>
-                </motion.article>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* =====================================================
-          ENGINEERING
-      ===================================================== */}
-      {hasEngineering && (
-        <section className="pd-section pd-engineering">
-          <div className="pd-container">
-            <SectionLabel number="05">ENGINEERING</SectionLabel>
-
-            <div className="pd-engineering-heading">
-              <motion.h2
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewport}
-                variants={fadeSide(-1)}
-              >
-                {project.engineering.title}
-              </motion.h2>
-
-              <motion.p
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewport}
-                variants={fadeSide(1)}
-              >
-                A closer look at the technical decisions and implementation
-                work behind the finished product.
-              </motion.p>
-            </div>
-
-            <div className="pd-engineering-grid">
-              {project.engineering.points.map((item, index) => (
-                <motion.article
-                  className="pd-engineering-item"
-                  key={item.title}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={viewport}
-                  variants={fadeUp}
-                  transition={{
-                    delay: Math.min(index * 0.06, 0.25),
-                  }}
-                >
-                  <span className="pd-engineering-dot" />
-
-                  <div>
-                    <h3>{item.title}</h3>
-                    <p>{item.text}</p>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* =====================================================
-          OPTIONAL DATABASE + SECURITY
-      ===================================================== */}
-      {(project.database?.length > 0 || project.security?.length > 0) && (
-        <section className="pd-section pd-technical">
-          <div className="pd-container">
-            <SectionLabel number="06">TECHNICAL DETAILS</SectionLabel>
-
-            <div className="pd-technical-grid">
-              {project.database?.length > 0 && (
-                <div className="pd-technical-block">
-                  <div className="pd-technical-icon">
-                    <Database size={19} />
-                  </div>
-
-                  <span className="pd-small-label">DATABASE</span>
-
-                  <h3>Data structured around the product.</h3>
-
-                  <ul>
-                    {project.database.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {project.security?.length > 0 && (
-                <div className="pd-technical-block">
-                  <div className="pd-technical-icon">
-                    <ShieldCheck size={19} />
-                  </div>
-
-                  <span className="pd-small-label">SECURITY</span>
-
-                  <h3>Access and data protection.</h3>
-
-                  <ul>
-                    {project.security.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* =====================================================
-          MY ROLE
-      ===================================================== */}
-      {hasContributions && (
-        <section className="pd-section pd-role">
-          <div className="pd-container">
-            <SectionLabel number="07">MY ROLE</SectionLabel>
-
-            <div className="pd-role-grid">
+            <div className="pd-learning-layout">
               <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={viewport}
                 variants={fadeSide(-1)}
               >
-                <span className="pd-role-label">{project.role}</span>
-
                 <h2>
-                  {project.roleTitle.main}
-                  <span>{project.roleTitle.accent}</span>
+                  What this project
+                  <span> taught me.</span>
                 </h2>
 
-                <p>{project.roleDescription}</p>
+                <p className="pd-learning-intro">
+                  The most useful lessons I took from building and working on
+                  this project.
+                </p>
               </motion.div>
 
-              <motion.div
-                className="pd-contributions"
+              <motion.ul
                 initial="hidden"
                 whileInView="visible"
                 viewport={viewport}
                 variants={fadeSide(1)}
               >
-                <span className="pd-small-label">WHAT I CONTRIBUTED</span>
-
-                <ul>
-                  {project.contributions.map((item) => (
-                    <li key={item}>
-                      <Check size={15} />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
+                {project.learnings.slice(0, 5).map((item) => (
+                  <li key={item}>
+                    <Check size={15} />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </motion.ul>
             </div>
           </div>
         </section>
@@ -579,7 +304,7 @@ function ProjectDetails() {
       ===================================================== */}
       <section className="pd-section pd-outcome">
         <div className="pd-container">
-          <SectionLabel number="08">OUTCOME</SectionLabel>
+          <SectionLabel number="04">OUTCOME</SectionLabel>
 
           <motion.div
             className="pd-outcome-content"
@@ -589,7 +314,7 @@ function ProjectDetails() {
             variants={fadeUp}
           >
             <h2>
-              {project.outcomeTitle.main}
+              {project.outcomeTitle.main}{" "}
               <span>{project.outcomeTitle.accent}</span>
             </h2>
 
@@ -597,63 +322,6 @@ function ProjectDetails() {
           </motion.div>
         </div>
       </section>
-
-      {/* =====================================================
-          LEARNINGS
-      ===================================================== */}
-      {(hasLearnings || hasFutureImprovements) && (
-        <section className="pd-section pd-reflection">
-          <div className="pd-container">
-            <div className="pd-reflection-grid">
-              {hasLearnings && (
-                <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={viewport}
-                  variants={fadeSide(-1)}
-                >
-                  <span className="pd-small-label">WHAT I LEARNED</span>
-
-                  <h3>What this project taught me.</h3>
-
-                  <ul>
-                    {project.learnings.map((item) => (
-                      <li key={item}>
-                        <Check size={15} />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              )}
-
-              {hasFutureImprovements && (
-                <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={viewport}
-                  variants={fadeSide(1)}
-                >
-                  <span className="pd-small-label">
-                    FUTURE IMPROVEMENTS
-                  </span>
-
-                  <h3>Where I would take it next.</h3>
-
-                  <ul>
-                    {project.futureImprovements.map((item) => (
-                      <li key={item}>
-                        <span className="pd-list-number">+</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              )}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* =====================================================
           FOOTER
