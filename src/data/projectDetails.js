@@ -17,7 +17,7 @@ const projectDetails = {
       "A full-stack fleet management system that replaces manual mileage records with a centralized, role-based digital workflow.",
 
     overview:
-      "Mileage & Fleet Management is a private business application developed to replace a manual seven-day vehicle mileage recording process. The system centralizes vehicles, drivers, mileage entries, categories, monthly limits, authentication, and operational reporting into one structured platform.",
+      "Mileage & Fleet Management is a private business application developed to replace  manual vehicle mileage recording process. The system centralizes vehicles, drivers, mileage entries, categories, monthly limits, authentication, and operational reporting into one structured platform.",
 
     problem: {
       title: "Manual records made fleet operations harder to manage.",

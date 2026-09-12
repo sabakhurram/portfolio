@@ -32,8 +32,8 @@ const projects = [
     outcome: "Functional service platform",
     technologies: "React · Node.js · Firebase · PostgreSQL",
     image: "/projects/fixitnow.png",
-    live: "#",
-    github: "#",
+    live: "https://fixitnow-services.vercel.app/",
+    github: "https://github.com/sabakhurram/FixItNow_Frontend",
   },
 
   {
