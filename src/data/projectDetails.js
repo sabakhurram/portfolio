@@ -197,8 +197,8 @@ const projectDetails = {
 
     image: "/projects/mileage-management.png",
 
-    live: "#",
-    github: "#"
+    live: "https://admin.margallatravels.com.pk/",
+    github: "https://github.com/sabakhurram/margalla-travels-management-frontend",
   },
 
   // =========================================================
@@ -369,8 +369,8 @@ const projectDetails = {
 
     image: "/projects/fixitnow.png",
 
-    live: "#",
-    github: "#"
+    live: "https://fixitnow-services.vercel.app/",
+    github: "https://github.com/sabakhurram/FixItNow_Frontend",
   },
 
   // =========================================================
@@ -531,8 +531,8 @@ const projectDetails = {
 
     image: "/projects/coperate-website.png",
 
-    live: "https://margallatravels.com.pk/",
-    github: "#"
+     live: "https://margallatravels.com.pk/",
+    github: "https://github.com/sabakhurram/Margalla-Travels",
   },
 
   // =========================================================
@@ -699,7 +699,7 @@ const projectDetails = {
     image: "/projects/quiz-pop.png",
 
     live: "#",
-    github: "#"
+   github: "https://github.com/sabakhurram/QuizPop",
   }
 };
 
